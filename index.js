@@ -127,21 +127,158 @@
 // document.body.append(button)
 
 
-const background = 'yellow';
-const color = 'blue';
+// const background = 'yellow';
+// const color = 'white';
+// const isAuthorized = false;
 
-const button = document.createElement('button');
-button.innerText = 'click me';
-// button.style = 'background: red; color: white;'
-button.style = `background: ${background}; color: ${color}`
 
-const isAuthorized = false;
-button.addEventListener('click' , () => {
-    if(isAuthorized) {
-        return alert('autorizado')
-    } 
-        alert('no está autorizado')
+
+// const button = document.createElement('button');
+// button.innerText = 'click me';
+//  button.style = 'background: red; color: white;'
+// button.style = `background: ${isAuthorized ? 'blue' : 'red'}; color: ${color}`
+
+
+// button.addEventListener('click' , () => {
+//     if(isAuthorized) {
+//         return alert('autorizado')
+//     } 
+//         alert('no está autorizado')
     
-})
+// })
 
-document.body.append(button)
+// document.body.append(button)
+
+
+// ARRAY METHOD
+
+// const names = ['ryan', 'joe', 'maria'];
+
+// for (let i = 0 ; i < names.length; i++) {
+//     const element = names[i];
+//     console.log(element)
+// }
+
+// MAP
+// const newNames = names.map(function(name) {
+//     return `hola ${name}`
+// })
+// console.log(newNames)
+// console.log(names)
+
+// FIND
+
+// const nameFound = names.find(function(name) {
+//     if (name === 'joe')
+//     return name
+// })
+// console.log(nameFound)
+
+// FILTER
+
+// const newNames= names.filter(function(name) {
+//     if (name !== 'joe') {
+//       return name  
+//     }
+    
+// })
+// console.log(newNames)
+// console.log(names)
+
+// const names = ['ryan', 'joe', 'maria'];
+// const newNames = ['marcos', 'mario', 'john'];
+
+// console.log(names.concat(newNames))
+// console.log(names)
+// console.log(newNames)
+
+// CONCATENAR SIN CONCAT
+
+// console.log([...names, ...newNames])
+
+// const user = {
+//     name: 'ryan',
+//     lastname: 'ray'
+// };
+
+// const address = {
+//     street: 'main street 123',
+//     city: 'bogota'
+// }
+
+// const userInfo = {
+//     ...user,
+//     ...address
+// }
+// console.log(userInfo)
+//     console.log(user)
+//     console.log(address)
+
+
+// ECMASCRIPT MODULES
+
+// import {add , multiply, points, title, active} from './add.js'
+
+// console.log(add(10, 20))
+// console.log(multiply(10, 20))
+// console.log(active, points, title)
+
+// import addModule from './add.js'
+// console.log(addModule)
+// OPTIONAL CHAINING
+
+// const person = {
+//     name: 'ryan',
+//     address: {
+//         city: 'london'
+//     }, 
+//     location: {}
+// }
+// if (person.location) {
+//     console.log(person.location?.city)
+// }
+
+
+
+// ASYNC AWAIT
+
+// let data = fetch('https://jsonplaceholder.typicode.com/posts')
+
+// fetch('https://jsonplaceholder.typicode.com/posts')
+//     .then( function () {
+//         console.log('finalizó la carga')
+//     })
+// console.log('linea 2')
+
+
+const ul = document.createElement('ul');
+
+
+// fetch('https://jsonplaceholder.typicode.com/posts')
+//     .then( function (response) {
+//        return response.json()       
+//     }) .then(function(data) {
+//         console.log(data)
+//         // data.forEach( function(post){ 
+//         //     const li = document.createElement('li');
+//         //     li.innerText = post.title;
+//         //     ul.append(li);  
+//         // });
+//         // document.body.append(ul)
+//     });
+
+async function loadData() {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+
+    const data = await response.json();
+    console.log(data)
+    data.forEach( function(post){ 
+            const li = document.createElement('li');
+            li.innerText = post.title;
+            ul.append(li);  
+        });
+        document.body.append(ul)
+}
+ loadData()
+console.log('linea 2')
+
